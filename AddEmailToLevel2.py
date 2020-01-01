@@ -24,8 +24,11 @@ for dirr in dirname:
             if(row[0].lower() == name[0].lower()):
                 print("found")
                 for indx , rw in readFile.iterrows():
-                    
-                    rw['d'] = "its here"
+                    readFile.insert(3 , 'Mail' , row[4])
                     break
-                print(readFile)    
+                writer = pd.ExcelWriter("C:/Users/sanghmitra.rathore/Desktop/testing2/New folder/" +  dirr + "/" + file )
+                df_out = pd.DataFrame(readFile)
+                df_out.to_excel(writer , sheet_name='sheet 1' , index = None , header = ["App Name", "Core/Non-Core", "Duration", "Mail"])
+                writer.save()    
+                    
                 
